@@ -17,3 +17,19 @@ if (!!formDataString) {
 form.addEventListener('input', () => {
   throttledSetItem(formDataKey, JSON.stringify({ email: emailInput.value, message: messageInput.value }));
 });
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const formData = {
+    email: emailInput.value,
+    message: messageInput.value
+  };
+
+  console.log(formData);
+
+  emailInput.value = "";
+  messageInput.value = "";
+
+  localStorage.removeItem(formDataKey);
+});
